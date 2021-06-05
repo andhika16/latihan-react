@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Counters from './components/counters';
 import Navbar from './components/navBar';
+import Card from './components/card';
 import './App.css';
 class App extends Component {
     state = {
@@ -47,8 +48,13 @@ class App extends Component {
             onIncrement={this.handleIncrement}
             onDelete={this.handleDelete}
             onReset={this.handleReset}
-
           />
+          <div className="row">
+            <Card />
+            <Card />
+            <Card />
+            
+          </div>
         </main>
       </ React.Fragment>
     );
