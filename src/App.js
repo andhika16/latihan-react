@@ -1,9 +1,11 @@
 import './index.css';
 import Header from './components/Header';
 import Task from './components/Tasks'
+import AddTask from './components/AddTask'
 import  { useState } from 'react';
 
 const App = () => {
+ 
   const [tasks, setTask] = useState([
     {
         id: 1,
@@ -23,17 +25,30 @@ const App = () => {
         day: 'Feb 5th at 6:30 pm',
         reminder : false
     },
-])
+  ])
+  
+  const [showAddTask, setShowAddTask] = useState(false)
 
+// add task
+  const addTask = (task) => {
 
+    const id = Math.floor(Math.random() * 10000) + 1
+    const newTask = { id, ...task }
+    setTask([...tasks, newTask])
+
+  }
+  
+// delete task
   const deleteEvent = (id) => {
     setTask(
       tasks.filter(task => task.id !== id)
     )
   }
-
+// toggle reminder
   const toggleReminder = (id) => {
-    setTask()
+    setTask(
+      tasks.map((task) => task.id === id ? { ...task, reminder: !task.reminder } : task )
+    )
   }
 
   
@@ -41,10 +56,19 @@ const App = () => {
   
   return (
         <div className="container">
-      <Header title='Task Tracker' />
+      <Header title='Task Tracker'
+        onAdd={() => setShowAddTask(!showAddTask)}
+        showAdd={showAddTask}
+
+      />
+      { showAddTask && <AddTask onAdd={addTask} />}
 
       {
-        tasks.length > 0 ? <Task tasks={tasks} onDelete={deleteEvent} onToggle={ toggleReminder }/> : <p>No tasks</p>
+        tasks.length > 0 ? <Task
+        tasks={tasks}
+          onDelete={deleteEvent}
+          onToggle={toggleReminder}
+        /> : <p>No tasks</p>
       }
 
         </div>
