@@ -5,7 +5,7 @@ import Footer from './components/Footer';
 import Task from './components/Tasks'
 import About from './components/About'
 import AddTask from './components/AddTask'
-import  { useState , useEffect} from 'react';
+import { useState, useEffect } from 'react';
 
 const App = () => {
  
@@ -94,24 +94,20 @@ const App = () => {
           <Header title='Task Tracker'
             onAdd={() => setShowAddTask(!showAddTask)}
             showAdd={showAddTask} />
-        <Route path='/'
-          exact
-          render={(props) => {
-            
-            <>
-            { showAddTask && <AddTask onAdd={addTask} />}
+        <Route path='/' exact render={(props) => 
+        <>
+              { showAddTask && <AddTask onAdd={addTask} />}
  
-           {
-             tasks.length > 0 ? <Task
-             tasks={tasks}
-               onDelete={deleteEvent}
-               onToggle={toggleReminder}
-             /> : <p>No tasks</p>
-           }  
-           </>
-
-          }}
-         />
+              {
+                tasks.length > 0 ? <Task
+                tasks={tasks}
+                  onDelete={deleteEvent}
+                  onToggle={toggleReminder}
+                /> : <p>No tasks</p>
+              }    
+        </>
+        }
+          />
           <Route path='/about' component={About} />
           <Footer />
       </div>

@@ -7,16 +7,10 @@
       "reminder": true
     },
     {
-      "id": 2,
-      "text": "Going To school",
-      "day": "Everyday th at 7:30 pm",
-      "reminder": true
-    },
-    {
-      "text": "Go to gym",
-      "day": "Sunday",
+      "text": "Hangout ",
+      "day": "Friday",
       "reminder": false,
-      "id": 3
+      "id": 2
     }
   ]
 }
