@@ -1,0 +1,48 @@
+
+
+.title {
+
+    font-size: 20px;
+    font-style: bold;
+    color: #fff;
+    text-decoration: none;
+}
+
+.my-navbar ul {
+    /* align-items: center; */
+    /* justify-content: center; */
+    float: right;
+    list-style-type: none;
+}
+
+.my-navbar li {
+    float: left;
+    margin-right: 30px;
+}
+
+
+
+.my-navbar li a{
+    border: 1px solid  transparent; 
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    
+}
+
+li a:hover {
+    background-color: #fff;
+    color: rgb(10, 10, 10);
+    border-bottom-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border: 1px solid rgb(119, 111, 111);
+}
+
+.myBtn {
+    background-color: rgba(201, 201, 218, 0.171);
+    color: #fff;
+    border-radius: 5px;
+    border: 1px solid rgb(119, 111, 111);
+}
+
