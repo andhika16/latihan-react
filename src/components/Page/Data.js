@@ -11,3 +11,16 @@ export const options = {
 }
 
 
+export const sectionData = [
+    {   
+        icon: <i class="icofont-handshake-deal"></i>
+    },
+    
+    {
+        icon: <i class="icofont-delivery-time"></i>
+    },
+    {
+        icon: <i class="icofont-support"></i>
+    }
+]
+

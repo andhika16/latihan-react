@@ -5,11 +5,6 @@ import Heading from './components/Heading';
 import './App.css';
 
 
-
-
-
-
-
 class App extends Component {
    
   render() {
