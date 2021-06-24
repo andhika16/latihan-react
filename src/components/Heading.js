@@ -8,7 +8,7 @@ const Heading = () => {
 
     return (
         <div className="headers">
-            <div class="container">
+            <div className="container">
             <Navbar />
             <div className="row text-white mt-5">
                 <div className="col-sm-5 col-md-5 col-lg-5 mt-5">

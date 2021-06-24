@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Section from './components/Section';
+import Sections from './components/Sections';
 
 import Heading from './components/Heading';
 import './App.css';
@@ -12,11 +12,12 @@ class App extends Component {
       <>
         <main >
           <Heading />
-          <Section title='bootstrap'/>
+          <Sections />
         </main>
       </>
     );
   }
 }
+
 
 export default App;
