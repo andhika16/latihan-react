@@ -34,15 +34,14 @@
 li a:hover {
     background-color: #fff;
     color: rgb(10, 10, 10);
-    border-bottom-left-radius: 25px;
-    border-top-right-radius: 25px;
-    border: 1px solid rgb(119, 111, 111);
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border: 1px solid rgb(241, 239, 239);
 }
 
 .myBtn {
     background-color: rgba(201, 201, 218, 0.171);
-    color: #fff;
     border-radius: 5px;
-    border: 1px solid rgb(119, 111, 111);
+    border: 1px solid rgb(252, 0, 0);
 }
 

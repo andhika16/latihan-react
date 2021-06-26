@@ -21,7 +21,7 @@ export const SectionOne = [
         id : 1,
         icons: "icofont-delivery-time icofont-3x text-success",
         textsTitle : 'On Time Delivery',
-        texts: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor, iste!"
+        texts: "Lorem ipsum dolor, "
         
     },
     {
@@ -44,22 +44,49 @@ export const SecondSection = [
 
     {
         id : 1,
-        image: "icofont-delivery-time icofont-3x text-success",
-        textsTitle : 'masuk',
-        texts: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor, iste!"
+        image: "img/1.jpg",
+        textsTitle: 'Gracia Del oure',
+        price: '$320.9',
+        texts: "Italy/15"
         
     },
     {
         id: 2,
-        image: "icofont-handshake-deal icofont-3x text-warning",
-        textsTitle : 'masuk',
-        texts: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor, iste!"
+        image: "img/2.jpg",
+        textsTitle: 'Consectetur',
+        price: '$420.9',
+        texts: "Japan/05 "
     },
     {
         id : 3,
-        image: "icofont-support icofont-3x text-primary",
-        textsTitle : 'masuk',
-        texts: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor, iste!"
+        image: "img/3.jpg",
+        textsTitle: 'Adipisicing',
+        price: '$520.9',
+        texts: "Jakarta/12 "
+    },
+
+]
+
+export const ThirdSection = [
+
+    {
+        id : 1,
+        image: "img/p1.jpg",
+        Name: 'Jhon Doe',
+        Position: 'Real Estate Agent',
+        
+    },
+    {
+        id: 2,
+        image: "img/p2.jpg",
+        Name: 'Michael Dave',
+        Position: 'Real Estate Agent',
+    },
+    {
+        id : 3,
+        image: "img/p3.jpg",
+        Name: 'Kate winstion',
+        Position: 'Real Estate Agent',
     },
 
 ]
