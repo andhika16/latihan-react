@@ -1,10 +1,13 @@
-import CreateBlog from "./CreateBlog";
 import Blog from "./Blog"
-const Home = () => {
+const Home = ({blogs, handleBlogPage}) => {
+ 
     return (
+
         <>
-            <CreateBlog />
-            <Blog />
+            <div className="blog">
+                <Blog blogs={blogs} handleBlogPage={handleBlogPage} />
+            </div>
+            
         </>
      );
 }
