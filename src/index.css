@@ -62,13 +62,18 @@ nav ul li .button:hover {
 
 .card {
   width: 30%;
+  max-height: 200px;
   margin: 10px;
-  border: 1px solid #000;
+  border: 1px solid rgb(146, 127, 127);
   padding: 20px;
+  overflow: hidden;
   box-sizing: border-box;
-  text-overflow: ellipsis;
 }
 
+.story {
+  height: 100px;
+  overflow: hidden;
+}
 .card .title {
   margin-bottom: 10px;
 }
@@ -79,6 +84,25 @@ nav ul li .button:hover {
   font-weight: bold;
   color: #45a049;
   cursor : pointer;
+}
+
+.BlogPage {
+  margin-bottom: 50px;
+}
+
+.BlogPage .page-blog {
+  margin: 50px auto;
+}
+
+.BlogPage .back {
+  padding: 10px;
+  background-color: #512aff;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+}
+.BlogPage .back:hover {
+  background-color: #9982ff;
 }
 
 

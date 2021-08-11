@@ -4,15 +4,15 @@ const BlogPage = () => {
     const { state} = useLocation()
 
     return (
-        <div class="BlogPage">
-            <div class="page-title">
-                <p>id : {state.blogs.id}</p>
+        <div className="BlogPage">
+            <div className="page-title">
                 <h1>{state.blogs.title}</h1>
             </div>
-            <div class="page-blog">
-                <h1>{state.blogs.blog}</h1>
+
+            <div className="page-blog">
+                <h3>{state.blogs.blog}</h3>
             </div>
-            <Link to="/" ><h2>Kembali</h2></Link>
+            <Link  className="back" to="/">Kembali</Link>
         </div>
      );
 }

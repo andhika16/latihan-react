@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Heading from './components/Heading';
 import Home from './components/Home';
 import CreateBlog from "./components/CreateBlog";
 import BlogPage from "./components/BlogPage";
-
-import { BrowserRouter as Router, Route, Switch ,Redirect } from 'react-router-dom';
+import fetch from "node-fetch";
+import { BrowserRouter as Router, Route, Switch  } from 'react-router-dom';
 
 import './index.css';
 import './App.css';
@@ -12,25 +12,27 @@ import './App.css';
 
 const App = () => {
 
-   const data = [
-        { id: 1, title: 'blog 1', blog: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit, explicabo.' },
-        { id: 2, title: 'blog 2', blog: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit, explicabo.' },
-        { id: 3, title: 'blog 3', blog: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit, explicabo.' },
-        { id: 4, title: 'blog 4', blog: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit, explicabo.' },
-        { id: 5, title: 'blog 5', blog: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit, explicabo.' },
-    ]
 
-    const [blogs, setBLog] = useState(data) 
-
+    const [blogs, setBLog] = useState([]) 
+    
     const addBlog = (blog) => {
-        const id = Math.floor(Math.random() * 1000) + 1;
-        const newBlog = {id, ...blog}
-        setBLog([...blogs,newBlog ])
-
-      
+      const id = Math.floor(Math.random() * 1000) + 1;
+      const newBlog = {id, ...blog}
+      setBLog([...blogs,newBlog ])
     }
+    
+    useEffect(() => {
+      fetch('http://localhost:8000/data/')
+          .then(res => {
+            return res.json()
+          })
+          .catch(err => console.log('errror', err))
+          .then(data => setBLog(data))
+    },[])
+  
 
-
+ 
+  
     return (
       <Router>
         <div className="container">

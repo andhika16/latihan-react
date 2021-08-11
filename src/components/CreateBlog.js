@@ -2,17 +2,16 @@ import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
 const CreateBlog = ({onAdd}) => {
+    const history = useHistory();
 
     const [title, setTitle] = useState('');
     const [blog, setBlog] = useState('');
-    const history = useHistory();
     const onSubmit = (e) => {
         e.preventDefault()
         onAdd({title , blog});
         setTitle('');
         setBlog('');
         history.push('/');
-        
     }
 
 
