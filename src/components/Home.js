@@ -1,14 +1,15 @@
 import Blog from "./Blog"
-const Home = ({blogs, handleBlogPage}) => {
- 
-    return (
+import UseFetch from './UseFetch'
+const Home = ( ) => {
+    const {data:blogs, isPending, isError } = UseFetch('http://localhost:8000/data')
 
-        <>
+
+    return (
             <div className="blog">
-                <Blog blogs={blogs} handleBlogPage={handleBlogPage} />
+                {isPending && <h1>Loading...</h1>}
+                   { blogs && <Blog blogs={blogs}  />} 
+                { isError && <h1>{ isError }</h1> }
             </div>
-            
-        </>
      );
 }
  

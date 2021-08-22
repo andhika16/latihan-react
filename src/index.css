@@ -61,7 +61,7 @@ nav ul li .button:hover {
 }
 
 .card {
-  width: 30%;
+  width: 40%;
   max-height: 200px;
   margin: 10px;
   border: 1px solid rgb(146, 127, 127);
@@ -75,6 +75,8 @@ nav ul li .button:hover {
   overflow: hidden;
 }
 .card .title {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 10px;
 }
 
@@ -84,6 +86,18 @@ nav ul li .button:hover {
   font-weight: bold;
   color: #45a049;
   cursor : pointer;
+
+}
+
+.card .link {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
+.card .icon {
+  width: 40px;
 }
 
 .BlogPage {

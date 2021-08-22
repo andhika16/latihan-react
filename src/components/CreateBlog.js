@@ -1,17 +1,28 @@
 import { useState } from 'react'
-import { useHistory } from 'react-router-dom'
-
-const CreateBlog = ({onAdd}) => {
+import { Redirect, useHistory } from 'react-router-dom'
+const CreateBlog = () => {
     const history = useHistory();
+    const [isPending,setIsPending] = useState(false)
 
     const [title, setTitle] = useState('');
     const [blog, setBlog] = useState('');
     const onSubmit = (e) => {
         e.preventDefault()
-        onAdd({title , blog});
-        setTitle('');
-        setBlog('');
-        history.push('/');
+        const blogs = { title, blog }
+        fetch('http://localhost:8000/data', {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(blogs)
+
+        })
+            .then(() => {
+                console.log('good')
+                setIsPending(false)
+                Redirect('/')
+            })
+        
+
+        
     }
 
 
@@ -24,29 +35,29 @@ const CreateBlog = ({onAdd}) => {
             <form action="/" onSubmit={onSubmit}>
             <div className="row">
                 <div className="col-25">
-                    <label for="fname">Judul</label>
+                    <label >Judul</label>
                 </div>
                 <div className="col-75">
                     <input type="text" id="fname" name="judul" 
                     placeholder="Ketikan Judul" 
-                                value={title} onChange={e => setTitle(e.target.value)}
-                                required
-                                />
+                    value={title} onChange={e => setTitle(e.target.value)}
+                    required />
                 </div>
             </div>
             <div className="row">
                 <div className="col-25">
-                        <label for="cerita">Tuliskan Cerita</label>
+                        <label>Tuliskan Cerita</label>
                 </div>
                 <div className="col-75">
                     <textarea id="cerita" name="cerita"  placeholder="Tuliskan Cerita" value={blog} onChange={ e => setBlog(e.target.value)} style={{height:'200px'}} required></textarea>
                 </div>
-                <div className="col-25">
-                    <input type="submit" value="submit" />
+                        <div className="col-25">
+                            {!isPending && <input type="submit" value="submit" />}
+                            {isPending && <input type="submit" disabled value="adding..blog" />}
+                    
                 </div>
             </div>
-               
-                </form>
+            </form>
 
         </div>
         </>
