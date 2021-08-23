@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Redirect, useHistory } from 'react-router-dom'
+import {  useHistory } from 'react-router-dom'
 const CreateBlog = () => {
     const history = useHistory();
     const [isPending,setIsPending] = useState(false)
@@ -9,19 +9,19 @@ const CreateBlog = () => {
     const onSubmit = (e) => {
         e.preventDefault()
         const blogs = { title, blog }
+        setIsPending(true)
         fetch('http://localhost:8000/data', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(blogs)
 
         })
-            .then(() => {
-                console.log('good')
-                setIsPending(false)
-                Redirect('/')
-            })
+        .then(() => {
+            console.log('good')
+            setIsPending(false)
+            history.push('/')
+        })
         
-
         
     }
 

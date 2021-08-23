@@ -100,19 +100,41 @@ nav ul li .button:hover {
   width: 40px;
 }
 
-.BlogPage {
-  margin-bottom: 50px;
+.BlogPage  {
+  max-width: 80%;
+  margin: auto;
 }
 
-.BlogPage .page-blog {
-  margin: 50px auto;
+.BlogPage .col:nth-child(1) .option-button .button{
+  margin: 5px;
 }
 
-.BlogPage .back {
+
+.BlogPage .col:nth-child(1) {
+  display: flex;
+  justify-content: space-between;
+}
+
+.BlogPage .col:nth-child(1) h1{
+  margin: auto;
+}
+
+
+.BlogPage .row {
+  display: flex;
+  flex-direction: column;
+}
+
+.BlogPage .button {
   padding: 10px;
   background-color: #512aff;
   color: #fff;
+  width: 90px;
+  text-align: center;
+  height: 35px;
   border-radius: 5px;
+  border: none;
+  cursor: pointer;
   text-decoration: none;
 }
 .BlogPage .back:hover {

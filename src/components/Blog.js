@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-const Blog = ({blogs,isPending, isError}) => {
+const Blog = ({blogs,isPending, isError,handleDelete}) => {
     return ( 
         <>
             {blogs.map(blog =>
@@ -7,7 +7,7 @@ const Blog = ({blogs,isPending, isError}) => {
                     {isPending && <h1>Loading..</h1>}
                     {isError && <h1>{isError}</h1>}
                     <div className="title"><h2>{blog.title}</h2>
-                        <Link to="#">
+                        <Link to="#" onClick={() => handleDelete(blog.id)}>
                             <img src="icofont/myIcon/7460847501536572528-128.png" alt="" style={{maxWidth:'20px'}}/>
                         </Link>
                     </div>

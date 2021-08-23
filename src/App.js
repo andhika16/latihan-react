@@ -5,6 +5,7 @@ import BlogPage from "./components/BlogPage";
 import { BrowserRouter as Router, Route, Switch  } from 'react-router-dom';
 import './index.css';
 import './App.css';
+import NotFound from './components/NotFound';
 
 
 const App = () => {
@@ -23,6 +24,9 @@ const App = () => {
             </Route>
             <Route path="/blog-page/:id" >
               <BlogPage />
+            </Route>
+            <Route path="*">
+              <NotFound />
             </Route>
           </Switch>
           
