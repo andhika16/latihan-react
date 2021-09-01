@@ -1,25 +1,43 @@
-import {Link,useParams} from 'react-router-dom';
+import {Link,useParams,useHistory} from 'react-router-dom';
 import UseFetch from './UseFetch'
-const BlogPage = ({handleDelete}) => {
-    
+const BlogPage = () => {
     const { id }  = useParams()
-    const { data:blogs,isPending,isError } = UseFetch(`http://localhost:8000/data/${id}`)
+    const url = `http://localhost:8000/data/${id}`
+    const { data:blogs, isPending, isError } = UseFetch(url)
+    const history = useHistory()
+    const handleDelete = () => {
+          fetch(url, {
+              method: 'DELETE'
+          })
+              .then(() => {
+              history.push('/')
+          })
+      }
+  
+   
     return (
+        
         <div className="BlogPage">
+            <div className="row">
             {isPending && <h1>Loading..</h1>}
             {isError && <h1>{isError}</h1>}
-            <div class="row">
-                <div class="col">
+                <div className="col">
                     <h1>{blogs.title}</h1>
-                    <div class="option-button">
-                <button className="button" onClick={() => handleDelete(blogs.id)}>delete</button>
-                <button className="button">edit</button>
+                </div>
+                <div className="col">
+                    <h3>{blogs.blog}</h3>
+                </div>
+                <div className="option">
+                    <Link className="button" to="/">Kembali</Link>
+                    <div className="icon">
+                        <Link to={"/edit-blog/" + blogs.id} >
+                        <img src="/icofont/myIcon/9256664211560147103-128.png" alt=""/>
+                        </Link>
+                        <span>
+                        <img src="/icofont/myIcon/7460847501536572528-128.png" alt="" onClick={ () => handleDelete(blogs.id)}/>
+                        </span>
                     </div>
                 </div>
-                <div class="col">
-                <h3>{blogs.blog}</h3>
-                </div>
-                <Link  className="button" to="/">Kembali</Link>
             </div>
         </div>
      );

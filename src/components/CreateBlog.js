@@ -3,7 +3,6 @@ import {  useHistory } from 'react-router-dom'
 const CreateBlog = () => {
     const history = useHistory();
     const [isPending,setIsPending] = useState(false)
-
     const [title, setTitle] = useState('');
     const [blog, setBlog] = useState('');
     const onSubmit = (e) => {
@@ -17,7 +16,6 @@ const CreateBlog = () => {
 
         })
         .then(() => {
-            console.log('good')
             setIsPending(false)
             history.push('/')
         })
@@ -30,18 +28,20 @@ const CreateBlog = () => {
         <>
         <div className="create-blog">
             <h1>Buat Cerita</h1>
-
-                
             <form action="/" onSubmit={onSubmit}>
             <div className="row">
                 <div className="col-25">
                     <label >Judul</label>
                 </div>
                 <div className="col-75">
-                    <input type="text" id="fname" name="judul" 
-                    placeholder="Ketikan Judul" 
-                    value={title} onChange={e => setTitle(e.target.value)}
-                    required />
+                            <input
+                                type="text"
+                                id="fname" name="judul"
+                                placeholder="Ketikan Judul" 
+                                value={title}
+                                onChange={e => setTitle(e.target.value)}
+                                required
+                            />
                 </div>
             </div>
             <div className="row">
@@ -49,7 +49,13 @@ const CreateBlog = () => {
                         <label>Tuliskan Cerita</label>
                 </div>
                 <div className="col-75">
-                    <textarea id="cerita" name="cerita"  placeholder="Tuliskan Cerita" value={blog} onChange={ e => setBlog(e.target.value)} style={{height:'200px'}} required></textarea>
+                            <textarea id="cerita" name="cerita"
+                                placeholder="Tuliskan Cerita"
+                                value={blog}
+                                onChange={e => setBlog(e.target.value)}
+                                style={{ height: '200px' }}
+                                required>
+                            </textarea>
                 </div>
                         <div className="col-25">
                             {!isPending && <input type="submit" value="submit" />}
