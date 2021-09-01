@@ -8,14 +8,13 @@ import './index.css';
 import './App.css';
 import NotFound from './components/NotFound';
 
-
 const App = () => {
  
   
     return (
       <Router>
         <div className="container">
-          <Heading />
+          <Heading  />
           <Switch>
             <Route exact path="/">
               <Home />

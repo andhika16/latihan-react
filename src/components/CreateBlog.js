@@ -58,7 +58,7 @@ const CreateBlog = () => {
                             </textarea>
                 </div>
                         <div className="col-25">
-                            {!isPending && <input type="submit" value="submit" />}
+                            {!isPending && <input type={title && blog ?"submit" : "hidden"} value="submit" />}
                             {isPending && <input type="submit" disabled value="adding..blog" />}
                     
                 </div>

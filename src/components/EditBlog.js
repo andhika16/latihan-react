@@ -3,37 +3,41 @@ import { useHistory, useParams } from 'react-router-dom'
 import UseFetch from "./UseFetch"
 const EditBlog = () => {
     const { id } = useParams()
-    // const { data: blogs, isPending, isError } = UseFetch(`http://localhost:8000/data/${id}`)
+    const url = `http://localhost:8000/data/${id}`
+    const {  data:blogs,isPending, isError } = UseFetch(url)
     
     const history = useHistory();
-    
-    const [updateForm, setUpdateForm] = useState([])
     const [title, setTitle] = useState([])
     const [blog, setBlog] = useState([])
-    // useEffect(() => {
-    // fetch(`http://localhost:8000/data/${id}`)
-    //     .then(res => {
-    //         return res.json()
-    //     }).then(data => {
-    //         console.log(data)
-    //         setUpdateForm(data)
-    //     })
-    // })
+    useEffect(() => {
+    fetch(url)
+        .then(res => {
+            return res.json()
+        }).then(data => {
+            setTitle(data.title)
+            setBlog(data.blog)
+        })
+    },[url])
 
 
     const onSubmit = (e) => {
-        e.preventDefault()
-        fetch(`http://localhost:8000/data/${id}`, {
-            method: 'PUT',
-            headers: {
-                // "Accept":"application/json",
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify()
 
+        if (title === blogs.title) {
+            console.log('ndak ono berubah');
+            history.push(`/edit-blog/${id}`)
+        }
+
+        e.preventDefault()
+        // console.log({title,blog});
+        fetch(url, {
+            method: 'PUT',
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({title,blog})
         })
             .then(res =>  res.json())
-            .then((data) => console.log(data))
+            .then(() => {
+                history.push('/')
+            })
         .catch(err => console.log(err))
         
         
@@ -43,36 +47,37 @@ const EditBlog = () => {
     return (
         <>
             <div className="create-blog">
-            {/* {isPending && <h1>Loading..</h1>}
-            {isError && <h1>{isError}</h1>} */}
+            {isPending && <h1>Loading..</h1>}
+            {isError && <h1>{isError}</h1>}
             <h1>Update Cerita</h1>
             <form action="/" onSubmit={onSubmit}>
             <div className="row">
                 <div className="col-25">
-                    <label >Judul</label>
+                    <label >Ganti Judul</label>
                 </div>
                 <div className="col-75">
                     <input type="text" id="fname" name="title" 
                     placeholder="Ketikan Judul" 
-                                defaultValue={updateForm.title}
+                                defaultValue={title}
                                 onChange={e => setTitle(e.target.value)}
                     required />
                 </div>
             </div>
             <div className="row">
                 <div className="col-25">
-                        <label>Tuliskan Cerita</label>
+                        <label>Update Cerita</label>
                 </div>
                 <div className="col-75">
                             <textarea id="cerita" name="blog"
                                 placeholder="Tuliskan Cerita"
-                                defaultValue={updateForm.blog}
+                                defaultValue={blog}
                                 onChange={e => setBlog(e.target.value)}
-                                 style={{ height: '200px' }} required></textarea>
+                                style={{ height: '200px' }} required>
+                            </textarea>
                 </div>
                         <div className="col-25">
-                            {/* {!isPending && <input type="submit" value="submit" />}
-                            {isPending && <input type="submit" disabled value="adding..blog" />} */}
+                            {!isPending && <input type="submit" value="submit" />}
+                            {isPending && <input type="submit" disabled value="adding..blog" />}
                     
                 </div>
             </div>

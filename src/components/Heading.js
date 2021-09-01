@@ -1,21 +1,38 @@
 import {Link} from 'react-router-dom';
-
-
+import '../index.css'
 
 
 const Heading = () => {
+    function handleHamburger ()  {
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector(".nav-menu");
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+    }
     return ( 
-            <header>
-                <nav>
-                    <div className="title">
-                        <h1>Yuk Cerita</h1>
-                    </div>
-                    <ul>
-                        <li><Link to="/">Home</Link></li>
-                        <li><Link to="/blog-page">Ceritaku</Link></li>
-                        <li><Link className="button" to="/create-blog">Buat Cerita</Link></li>
-                    </ul>
-                </nav>
+        <header className="header">
+            <nav className="navbar">
+                <Link to="/" className="nav-logo">WebDev.</Link>
+                <ul className="nav-menu">
+                    <li className="nav-item">
+                        <Link to="create-blog" className="nav-link">Buat Cerita</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/" className="nav-link">Blog</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="#" className="nav-link">About</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="#" className="nav-link">Contact</Link>
+                    </li>
+                </ul>
+                <div className="hamburger" onClick={() => handleHamburger()}>
+                    <span className="bar"></span>
+                    <span className="bar"></span>
+                    <span className="bar"></span>
+                </div>
+            </nav>
             </header>
      );
 }
