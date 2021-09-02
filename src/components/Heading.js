@@ -12,10 +12,10 @@ const Heading = () => {
     return ( 
         <header className="header">
             <nav className="navbar">
-                <Link to="/" className="nav-logo">WebDev.</Link>
+                <Link to="/" className="nav-logo">BlogDev.</Link>
                 <ul className="nav-menu">
                     <li className="nav-item">
-                        <Link to="create-blog" className="nav-link">Buat Cerita</Link>
+                        <Link to="/create-blog" className="nav-link">Buat Cerita</Link>
                     </li>
                     <li className="nav-item">
                         <Link to="/" className="nav-link">Blog</Link>

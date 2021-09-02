@@ -2,18 +2,13 @@
   "data": [
     {
       "title": "andhika",
-      "blog": "adasdasdasd",
+      "blog": "fuck it",
       "id": 1
     },
     {
       "title": "mantap",
-      "blog": "kkk",
+      "blog": "oke diubah",
       "id": 2
-    },
-    {
-      "title": "mantap",
-      "blog": "oke gan",
-      "id": 3
     },
     {
       "title": "oke",
@@ -21,9 +16,14 @@
       "id": 4
     },
     {
-      "title": "asadsad",
+      "title": "ntaps",
       "blog": "andhika",
       "id": 5
+    },
+    {
+      "title": "andhika",
+      "blog": "mantap",
+      "id": 6
     }
   ]
 }

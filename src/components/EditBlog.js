@@ -9,6 +9,7 @@ const EditBlog = () => {
     const history = useHistory();
     const [title, setTitle] = useState([])
     const [blog, setBlog] = useState([])
+    const [notification,setNotification]  = useState(false)
     useEffect(() => {
     fetch(url)
         .then(res => {
@@ -21,24 +22,26 @@ const EditBlog = () => {
 
 
     const onSubmit = (e) => {
+        e.preventDefault()
 
-        if (title === blogs.title) {
-            console.log('ndak ono berubah');
+        if (blogs.title === title && blogs.blog === blog) {
+            setNotification(true)
             history.push(`/edit-blog/${id}`)
+        } else {
+            fetch(url, {
+                method: 'PUT',
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({title,blog})
+            })
+                .then(res =>  res.json())
+                .then(() => {
+                    setNotification(false)
+                    history.push('/')
+                })
+            .catch(err => console.log(err))
         }
 
-        e.preventDefault()
-        // console.log({title,blog});
-        fetch(url, {
-            method: 'PUT',
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({title,blog})
-        })
-            .then(res =>  res.json())
-            .then(() => {
-                history.push('/')
-            })
-        .catch(err => console.log(err))
+        
         
         
     }
@@ -48,8 +51,11 @@ const EditBlog = () => {
         <>
             <div className="create-blog">
             {isPending && <h1>Loading..</h1>}
-            {isError && <h1>{isError}</h1>}
-            <h1>Update Cerita</h1>
+                {isError && <h1>{isError}</h1>}
+                
+                <h1>Update Cerita</h1>
+                {notification && <h1>Maaf anda tidak mengupdate apapun</h1> }
+                {!notification && '' }
             <form action="/" onSubmit={onSubmit}>
             <div className="row">
                 <div className="col-25">
@@ -76,8 +82,8 @@ const EditBlog = () => {
                             </textarea>
                 </div>
                         <div className="col-25">
-                            {!isPending && <input type="submit" value="submit" />}
-                            {isPending && <input type="submit" disabled value="adding..blog" />}
+                        <input type={blogs.title === title && blogs.blog === blog ? "hidden" : "submit"} value="submit" />
+                            
                     
                 </div>
             </div>

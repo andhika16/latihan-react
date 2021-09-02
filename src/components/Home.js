@@ -8,16 +8,19 @@ const Home = ( ) => {
             {isPending && <h1>Loading...</h1>}
             { isError && <h1>{ isError }</h1> }
             {blogs.map(blog =>
-                <Link className="card" to={"/blog-page/" + blog.id} key={blog.id}>
+            <div className="card">
+                <Link to={"/blog-page/" + blog.id} key={blog.id}>
                         {isPending && <h1>Loading..</h1>}
                         {isError && <h1>{isError}</h1>}
                         <div className="title">
-                            <h2>{blog.title}</h2>
+                            <h1>{blog.title}</h1>
                         </div>
                         <div className="story">
                             <h4>{blog.blog}</h4>
                         </div>
                     </Link>
+
+            </div>
                 )}
             </div>
      );
