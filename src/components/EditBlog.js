@@ -81,10 +81,8 @@ const EditBlog = () => {
                                 style={{ height: '200px' }} required>
                             </textarea>
                 </div>
-                        <div className="col-25">
-                        <input type={blogs.title === title && blogs.blog === blog ? "hidden" : "submit"} value="submit" />
-                            
-                    
+                <div className="col-25">
+                        {blogs.title === title && blogs.blog === blog ? "" : <input type="submit" value="submit" />}
                 </div>
             </div>
             </form>
