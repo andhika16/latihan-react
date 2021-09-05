@@ -2,7 +2,7 @@ import {Link,useParams,useHistory} from 'react-router-dom';
 import UseFetch from './UseFetch'
 const BlogPage = () => {
     const { id }  = useParams()
-    const url = `http://localhost:8000/data/${id}`
+    const url = `http://localhost:8000/posts/${id}`
     const { data:blogs, isPending, isError } = UseFetch(url)
     const history = useHistory()
     const handleDelete = () => {
@@ -22,10 +22,10 @@ const BlogPage = () => {
             {isPending && <h1>Loading..</h1>}
             {isError && <h1>{isError}</h1>}
                 <div className="col">
-                    <h1>{blogs.title}</h1>
+                    <h3>{blogs.title}</h3>
                 </div>
                 <div className="col">
-                    <h3>{blogs.blog}</h3>
+                    <p>{blogs.body}</p>
                 </div>
                 <div className="option">
                     <Link className="button" to="/">Kembali</Link>

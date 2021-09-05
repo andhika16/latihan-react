@@ -3,12 +3,12 @@ import { useHistory, useParams } from 'react-router-dom'
 import UseFetch from "./UseFetch"
 const EditBlog = () => {
     const { id } = useParams()
-    const url = `http://localhost:8000/data/${id}`
+    const url = `http://localhost:8000/posts/${id}`
     const {  data:blogs,isPending, isError } = UseFetch(url)
     
     const history = useHistory();
     const [title, setTitle] = useState([])
-    const [blog, setBlog] = useState([])
+    const [body, setBlog] = useState([])
     const [notification,setNotification]  = useState(false)
     useEffect(() => {
     fetch(url)
@@ -16,7 +16,7 @@ const EditBlog = () => {
             return res.json()
         }).then(data => {
             setTitle(data.title)
-            setBlog(data.blog)
+            setBlog(data.body)
         })
     },[url])
 
@@ -24,14 +24,14 @@ const EditBlog = () => {
     const onSubmit = (e) => {
         e.preventDefault()
 
-        if (blogs.title === title && blogs.blog === blog) {
+        if (blogs.title === title && blogs.body === body) {
             setNotification(true)
             history.push(`/edit-blog/${id}`)
         } else {
             fetch(url, {
                 method: 'PUT',
                 headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({title,blog})
+                body: JSON.stringify({title,body})
             })
                 .then(res =>  res.json())
                 .then(() => {
@@ -76,13 +76,13 @@ const EditBlog = () => {
                 <div className="col-75">
                             <textarea id="cerita" name="blog"
                                 placeholder="Tuliskan Cerita"
-                                defaultValue={blog}
+                                defaultValue={body}
                                 onChange={e => setBlog(e.target.value)}
                                 style={{ height: '200px' }} required>
                             </textarea>
                 </div>
                 <div className="col-25">
-                        {blogs.title === title && blogs.blog === blog ? "" : <input type="submit" value="submit" />}
+                        {blogs.title === title && blogs.body === body ? "" : <input type="submit" value="submit" />}
                 </div>
             </div>
             </form>
@@ -93,21 +93,3 @@ const EditBlog = () => {
 }
  
 export default EditBlog;
-    // const {title,blog} = blogs
-    // const [title, setTitle] = useState('');
-    // const [blog, setBlog] = useState('');
-    // const [data,setBlogs] = useState([])
-    // const formData = setBlogs(blogs)
-    // if (blogs) {
-    //     setBlogs(blogs)
-    // } else {
-    //     console.log('no blogs');
-    // }
-    // const handleEdit = (e) => {
-    //     const updateData = blogs
-    //     updateData[e.target.title] = e.target.value
-    //     updateData[e.target.blog] = e.target.value
-    //     console.log(updateData);
-    //     setUpdateForm(updateData)
-
-    // }

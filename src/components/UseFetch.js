@@ -4,20 +4,20 @@ const UseFetch = (url) => {
   const [isPending, setPending] = useState(true);
   const [isError, setError] = useState(null);
   
-  useEffect(() => {
+  useEffect( () => {
     const abortCont = new AbortController()
   
       fetch(url, { signal: abortCont.signal })
-        .then(res => {
+        .then( res => {
           if(!res.ok) {
             throw Error('data not found')
         }
         return res.json()
         })
-        .then(data => {
+        .then( data => {
+          setData(data)
           setPending(false)
           setError(null)
-          setData(data)
         })
         .catch(err => {
           if (err.name === 'AbortError') {

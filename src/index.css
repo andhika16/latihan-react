@@ -88,7 +88,6 @@ a {
 
 .card {
   width: 40%;
-  height: 200px;
   color: #000;
   margin: 10px;
   border: 1px solid rgb(146, 127, 127);
@@ -98,7 +97,6 @@ a {
 }
 
 .story {
-  height: 20px;
   overflow: hidden;
 }
 .card .title {
@@ -108,18 +106,16 @@ a {
 }
 
 /* single blog page */
-.BlogPage  {
-  /* max-width: 80%; */
-  margin: auto;
-}
+
 
 .BlogPage .row {
+  width : 50%;
+  border: #000 1px solid;
   display: flex;
   flex-direction: column;
   text-align: center;
   padding: 10px;
   box-sizing: border-box;
-  margin-bottom: 10px;
 }  
 
 .BlogPage .option {
@@ -157,7 +153,71 @@ a {
 }
 /* end of blog */
 
+/* user blog post */
+.user-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
 
+.user {
+  position: relative;
+  width: 90%;
+  margin-bottom:  90px;
+  height: 300px;
+  background-color: #dbdbdb;
+}
+
+
+
+
+.user .row {
+  position: absolute;
+  bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 25px;
+  margin-bottom: -80px;
+}
+
+.user .row .col {
+  font-size: 15px;
+
+}
+
+.user .row .col .image img {
+  max-width: 100px;
+  border-radius: 50%;
+  background-color: rgb(105, 105, 105);
+}
+.user .row .col .image {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+
+.post {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.post .row {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.post .col {
+  max-width: 80%;
+  padding: 10px;
+  box-sizing: border-box;
+  margin: 10px;
+}
+
+/* end */
 
 
 /* create blog page */

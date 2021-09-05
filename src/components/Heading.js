@@ -21,10 +21,10 @@ const Heading = () => {
                         <Link to="/" className="nav-link">Blog</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="#" className="nav-link">About</Link>
+                        <Link to="/user-blog" className="nav-link">User</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="#" className="nav-link">Contact</Link>
+                        <Link to="/user-blog/" className="nav-link">Beranda</Link>
                     </li>
                 </ul>
                 <div className="hamburger" onClick={() => handleHamburger()}>

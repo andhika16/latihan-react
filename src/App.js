@@ -7,6 +7,8 @@ import { BrowserRouter as Router, Route, Switch  } from 'react-router-dom';
 import './index.css';
 import './App.css';
 import NotFound from './components/NotFound';
+import UsersBlog from './components/UsersBlog';
+import User from './components/User';
 
 const App = () => {
  
@@ -27,6 +29,12 @@ const App = () => {
             </Route>
             <Route path="/edit-blog/:id">
               <EditBlog  />
+            </Route>
+            <Route path="/user-blog/">
+              <UsersBlog  />
+            </Route>
+            <Route path="/user/:id">
+              <User  />
             </Route>
             <Route path="*">
               <NotFound />
